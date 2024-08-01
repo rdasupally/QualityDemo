@@ -33,7 +33,7 @@ jobs:
       - name: Notify Execution completion
         uses: fjogeleit/http-request-action@v1
         with:
-          url: '${{ vars.SF_ORG_URL }}/services/data/v60/sobjects/sf_devops__Test_Execution_Completed__e/'
+          url: '${{ vars.SF_ORG_URL }}/services/data/v60.0/sobjects/sf_devops__Test_Execution_Completed__e/'
           bearerToken: ${{ fromJson(steps.get_token.outputs.response).access_token }}
           customHeaders: '{"Content-Type": "application/json"}'
           data: '{"sf_devops__executionId__c": "MTSE-00001","sf_devops__message__c": "Code Analyser tests execution completed","sf_devops__Test_Provider__c": "Salesforce Code Analyser"}'
