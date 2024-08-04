@@ -31,7 +31,8 @@ jobs:
           data: '{"grant_type":"client_credentials", "client_id": "${{ secrets.SF_CLIENT_ID }}", "client_secret":"${{ secrets.SF_CLIENT_SECRET }}"}'
 
       - name: print instance
-        run: echo 'instance URL: ${{ fromJson(steps.get_token.outputs.response).instance_url }}'
+        run: |
+          echo 'instance URL: ${{ fromJson(steps.get_token.outputs.response).instance_url }}'
 
       - name: Notify Execution completion
         uses: fjogeleit/http-request-action@v1
