@@ -1,5 +1,9 @@
 name: Salesforce Code Analyzer Workflow
 on: workflow_dispatch
+  inputs:
+    executionId:
+      type: string
+      description: execution id
 jobs:
   salesforce-code-analyzer-workflow:
     runs-on: ubuntu-latest
