@@ -38,7 +38,7 @@ jobs:
       - name: Notify Execution completion
         uses: fjogeleit/http-request-action@v1
         with:
-          url: '${{ vars.SF_ORG_URL }}/services/data/v60.0/sobjects/sf_devops__Test_Execution_Completed__e/'
+          url: '${{ vars.SF_ORG_URL }}/services/data/v61.0/sobjects/sf_devops__Test_Execution_Completed__e/'
           method: 'POST'
           bearerToken: '${{ fromJson(steps.get_token.outputs.response).access_token }}'
           customHeaders: '{"Content-Type": "application/json"}'
