@@ -1,5 +1,5 @@
 public class ProfileTest {
-    public void test() {
-        System.debug('test successful');
+    public void display() {
+        System.debug('hello world');
     }
 }
