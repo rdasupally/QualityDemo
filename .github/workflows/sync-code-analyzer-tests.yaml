@@ -15,3 +15,8 @@ jobs:
 
       - name: Get Code Analyzer tests
         run: sf code-analyzer rules -r all -v table > tests.txt
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: code-analyser5-tests
+          path: ./tests.txt
