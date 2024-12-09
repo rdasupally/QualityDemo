@@ -1,0 +1,23 @@
+name: Salesforce Code Analyzer Workflow
+on: workflow_dispatch
+jobs:
+  salesforce-code-analyzer-workflow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out files
+        uses: actions/checkout@v4
+
+      - name: Install Salesforce CLI
+        run: npm install -g @salesforce/cli@latest
+
+      - name: Setup Code Analyzer 5
+        run: sf plugins install code-analyzer@latest-alpha
+
+      - name: list files
+        run: ls -a
+
+      - name: Apply configuration
+        run: sf code-analyzer config --config-file='./config/code-analyzer-config.yml'
+
+      - name: Run Code analyzer
+        run: sf code-analyzer run
