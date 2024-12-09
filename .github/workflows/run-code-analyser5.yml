@@ -17,7 +17,7 @@ jobs:
         run: ls -a
 
       - name: Apply configuration
-        run: sf code-analyzer config --config-file='./config/code-analyzer-config.yml'
+        run: sf code-analyzer config --config-file='./.github/workflows/config/code-analyzer-config.yml'
 
       - name: Run Code analyzer
         run: sf code-analyzer run
