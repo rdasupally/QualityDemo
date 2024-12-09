@@ -1,4 +1,4 @@
-name: Salesforce Code Analyzer Workflow
+name: Run Code Analyzer5 Workflow
 on: workflow_dispatch
 jobs:
   salesforce-code-analyzer-workflow:
