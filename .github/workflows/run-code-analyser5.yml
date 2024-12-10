@@ -4,6 +4,10 @@ jobs:
   salesforce-code-analyzer-workflow:
     runs-on: ubuntu-latest
     steps:
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+            node-version: 20
       - name: Check out files
         uses: actions/checkout@v4
 
