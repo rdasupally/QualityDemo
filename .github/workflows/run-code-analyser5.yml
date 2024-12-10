@@ -25,9 +25,3 @@ jobs:
         with:
           name: code-analyser-report
           path: ./results.csv
-
-      - name: Upload results HTML artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: code-analyser-html-report
-          path: ./results.html
