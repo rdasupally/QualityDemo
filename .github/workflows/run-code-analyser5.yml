@@ -19,3 +19,9 @@ jobs:
 
       - name: Run Code analyzer
         run: sf code-analyzer run --config-file='./.github/workflows/config/code-analyzer-config.yml' --output-file results.csv --output-file results.html
+
+      - name: Upload results artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: code-analyser-report
+          path: ./results.csv
