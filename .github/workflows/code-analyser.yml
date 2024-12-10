@@ -21,6 +21,28 @@ jobs:
           run-arguments: --normalize-severity --target . --outfile results.html
           results-artifact-name: salesforce-code-analyzer-results
 
+      - name: Get Access Token
+        id: get_token
+        uses: fjogeleit/http-request-action@v1
+        with:
+          url: '${{ vars.SF_ORG_URL }}/services/oauth2/token'
+          method: 'POST'
+          customHeaders: '{"Content-Type": "application/x-www-form-urlencoded"}'
+          data: '{"grant_type":"client_credentials", "client_id": "${{ secrets.SF_CLIENT_ID }}", "client_secret":"${{ secrets.SF_CLIENT_SECRET }}"}'
+
+      - name: print instance
+        run: |
+          echo 'instance URL: ${{ fromJson(steps.get_token.outputs.response).instance_url }}'
+
+      - name: Notify Execution completion
+        uses: fjogeleit/http-request-action@v1
+        with:
+          url: '${{ vars.SF_ORG_URL }}/services/data/v60.0/sobjects/sf_devops__Test_Execution_Completed__e/'
+          method: 'POST'
+          bearerToken: '${{ fromJson(steps.get_token.outputs.response).access_token }}'
+          customHeaders: '{"Content-Type": "application/json"}'
+          data: '{"sf_devops__executionId__c": "MTSE-00001","sf_devops__message__c": "Code Analyser tests execution completed","sf_devops__Test_Provider__c": "Salesforce Code Analyser"}'
+    
       - name: Check the outputs to determine whether to fail
         if: |
           steps.run-code-analyzer.outputs.exit-code > 0 ||
