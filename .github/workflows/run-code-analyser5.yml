@@ -1,0 +1,27 @@
+name: Run Code Analyzer5 Workflow
+on: workflow_dispatch
+jobs:
+  salesforce-code-analyzer-workflow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+            node-version: 20
+      - name: Check out files
+        uses: actions/checkout@v4
+
+      - name: Install Salesforce CLI
+        run: npm install -g @salesforce/cli@latest
+
+      - name: Setup Code Analyzer 5
+        run: sf plugins install code-analyzer@latest-alpha
+
+      - name: Run Code analyzer
+        run: sf code-analyzer run --config-file='./.github/workflows/config/code-analyzer-config.yml' --output-file results.csv --output-file results.html
+
+      - name: Upload results artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: code-analyser-report
+          path: ./results.csv
