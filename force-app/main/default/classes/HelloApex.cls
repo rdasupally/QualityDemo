@@ -12,8 +12,4 @@ public class HelloApex {
     public string test() {
         return 'test';
     }
-    
-    public void test(string test) {
-        system.debug('test');
-    }
 }
