@@ -8,8 +8,4 @@ public class HelloApex {
         system.debug(string1);
         return string1;
     }
-    
-    public string test() {
-        return 'test';
-    }
 }
