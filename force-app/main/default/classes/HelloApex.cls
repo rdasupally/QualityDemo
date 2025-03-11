@@ -10,6 +10,6 @@ public class HelloApex {
     }
     
     public string test() {
-        return 'testt';
+        return 'test';
     }
 }
