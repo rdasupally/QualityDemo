@@ -2,7 +2,7 @@ name: Run Code Analyzer5 Workflow
 on: 
   workflow_dispatch:
     inputs:
-      config-branch:
+      config_branch:
         description: 'Config branch'
         required: false
         default: ''
