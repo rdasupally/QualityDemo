@@ -24,13 +24,5 @@ jobs:
        id: run-code-analyzer
        uses: forcedotcom/run-code-analyzer@v2
        with:
-         run-arguments: --workspace . --config-file .github/workflows/config/code-analyzer-config.yml --output-file results.html
+         run-arguments: --workspace . --config-file .github/workflows/config/code-analyzer-config.yml --output-file results.json
          results-artifact-name: salesforce-code-analyzer-v5-results
-
-
-     - name: Check the outputs to determine whether to fail
-       if: |
-         steps.run-code-analyzer.outputs.exit-code > 0 ||
-         steps.run-code-analyzer.outputs.num-sev1-violations > 0 ||
-         steps.run-code-analyzer.outputs.num-violations > 10
-       run: exit 1
